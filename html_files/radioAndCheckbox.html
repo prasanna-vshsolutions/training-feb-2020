@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      function checkRadioAndBox() {
+        var input_txt =
+          document.forms["checkRadioAndCheckboxForm"]["input_txt"].value;
+
+        var allRadioElements =
+          document.forms["checkRadioAndCheckboxForm"]["radio"];
+
+        allRadioElements.forEach(el => {
+          if (el.value === input_txt) el.checked = true;
+        });
+
+        let allCheckBoxes = document.querySelectorAll("input[type=checkbox]");
+
+        allCheckBoxes.forEach(el => {
+          if (el.value === input_txt) el.checked = true;
+          else el.checked = false;
+        });
+      }
+    </script>
+
+    <title>Radio & Checkbox</title>
+  </head>
+  <body>
+    <form name="checkRadioAndCheckboxForm">
+      Name : <input type="text" name="input_txt" autofocus required /> <br />
+      <input type="button" onclick="return checkRadioAndBox()" value="Check" />
+      <br />
+
+      <input type="radio" name="radio" value="ram" /> ram
+      <input type="radio" name="radio" value="anil" /> anil
+      <input type="radio" name="radio" value="sham" /> sham <br />
+
+      <input type="checkbox" name="ram" value="ram" /> ram
+      <input type="checkbox" name="anil" value="anil" /> anil
+      <input type="checkbox" name="sham" value="sham" /> sham<br />
+    </form>
+  </body>
+</html>

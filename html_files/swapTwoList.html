@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+         function addToList() {
+        
+        var selectList = document.getElementById("listOfNames2");
+
+        let list2 = document.getElementById("listOfNames");
+        let options  =  selectList.options;
+
+        var removeIndex = [];
+
+        for(let i=0; i<options.length; i++)
+        {
+          if(options[i].selected)
+          {
+            console.log(i);
+
+            let opt = document.createElement('option');
+            opt.value = options[i].value;
+            opt.innerHTML = options[i].value;
+            list2.appendChild(opt);
+            removeIndex.push(i);
+            //selectList.remove(i);
+          }
+        }
+        removeIndex =  removeIndex.reverse();
+        console.log(removeIndex);
+
+        removeIndex.forEach(el => {
+            selectList.remove(el);  
+        })
+        return false;
+      }
+      function addToList2() {
+        
+        
+        var selectList = document.getElementById("listOfNames");
+
+        let list2 = document.getElementById("listOfNames2");
+
+        let options  =  selectList.options;
+
+        var removeIndex = [];
+
+       for(let i=0; i<options.length; i++)
+       {
+          if(options[i].selected)
+          {
+            console.log(i);
+
+            let opt = document.createElement('option');
+            opt.value = options[i].value;
+            opt.innerHTML = options[i].value;
+            list2.appendChild(opt);
+            removeIndex.push(i);
+            //selectList.remove(i);
+          }
+       }
+      removeIndex =  removeIndex.reverse();
+      console.log(removeIndex);
+
+       removeIndex.forEach(el => {
+            selectList.remove(el);
+       })
+          return false;
+      }
+    </script>
+
+    <title>Reverse String</title>
+  </head>
+  <body>
+    <form name="swapListForm" style="width: 600px ;display:flex;">
+      <select name="cars" id="listOfNames" multiple>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+      </select>
+      <input
+        type="button"
+        onclick=" return addToList2()"
+        value="Add >>"
+        style="width:auto; margin: 20px;"
+      />
+      <input
+        type="button"
+        onclick=" return addToList()"
+        value="<<Add"
+        style="width:auto; margin: 20px;"
+      />
+      <select name="cars" id="listOfNames2" multiple>
+           
+          </select>
+      </ul>
+    </form>
+  </body>
+</html>

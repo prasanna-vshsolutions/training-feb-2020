@@ -1,0 +1,52 @@
+body {
+  width: 100%;
+  font-size: 20px;
+  background-color: white;
+}
+
+form {
+  position: absolute;
+  top: 20%;
+  left: 35%;
+  height: auto;
+  width: 400px;
+
+  padding: 30px;
+  background-color: white;
+  border: 1px solid black;
+}
+input[type="submit"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size: 22px;
+  background-color: green;
+  color: white;
+}
+input[type="Button"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size: 22px;
+  background-color: green;
+  color: white;
+}
+select,
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+label {
+  font-size: 20px;
+  position: relative;
+  top: 25px;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 22px 60px 20px 80px;
+  box-sizing: border-box;
+}
