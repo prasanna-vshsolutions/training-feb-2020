@@ -1,35 +1,47 @@
-function AddTofirstAndLast(firstObj, LastObj, userArray) {
-  userArray = [firstObj, ...userArray];
-  userArray = [...userArray, LastObj];
-  return userArray;
-}
-
-function getEmailNoWebsiteArray(users) {
-  let userInfo = users.map(({ email, phone, website }) => ({
-    email,
-    phone,
-    website
-  }));
-
-  let userInfo = users.map(el => {
-    let user = {};
-    user.email = el.email;
-    user.phone = el.phone;
-    user.website = el.website;
-    return user;
+let addToFirst = (userArray, user) => {
+  return new Promise((resolve, reject) => {
+    if (userArray) resolve([user, ...userArray]);
+    else reject("Error Passing Array");
   });
-  return userInfo;
-}
+};
 
-function replaceValue(key, value, users) {
-  return users.splice(key, 1, value);
-}
+let addToLast = (userArray, user) => {
+  return new Promise((resolve, reject) => {
+    if (userArray) resolve([...userArray, user]);
+    else reject("Error adding Array");
+  });
+};
 
-function deleteUsingKey(key, users) {
-  users.splice(key, 1);
+let OnlyMailNoWebsiteArray = users => {
+  return new Promise((resolve, reject) => {
+    if (users) {
+      let userInfo = users.map(({ email, phone, website }) => ({
+        email,
+        phone,
+        website
+      }));
+      resolve(userInfo);
+    } else reject("Error adding Array");
+  });
+};
 
-  return users;
-}
+let replaceUser = (id, user, users) => {
+  return new Promise((resolve, reject) => {
+    if (users) {
+      users.splice(id, 1, user);
+      resolve(users);
+    } else reject("Error Replacing Array");
+  });
+};
+
+let deleteUserWithId = (id, users) => {
+  return new Promise((resolve, reject) => {
+    if (users) {
+      users.splice(id, 1);
+      resolve(result);
+    } else reject("Error adding Array");
+  });
+};
 
 const users = [
   {
@@ -63,7 +75,7 @@ const user1 = {
 };
 
 const user2 = {
-  id: 4,
+  id: 3,
   name: "Denomer Crazy",
   username: "crazy.1",
   email: "deno@crazy.com",
@@ -72,7 +84,18 @@ const user2 = {
   password: "crazed_checker"
 };
 
-console.log(AddTofirstAndLast("A] " + user1, user2, users));
-console.log(getEmailNoWebsiteArray("B]" + users));
-console.log(replaceValue("C]" + 1, user1, users));
-console.log(deleteUsingKey("D]" + 0, users));
+addToFirst(users, user1)
+  .then(data => {
+    addToLast(data, user2)
+      .then(data => console.log(data))
+      .catch(er => console.log(er));
+  })
+  .catch(er => console.log(er));
+
+replaceUser(1, user1, users)
+  .then(data => console.log(data))
+  .catch(er => console.log(er));
+
+deleteUserWithId(1, users)
+  .then(data => console.log(data))
+  .catch(er => console.log(er));

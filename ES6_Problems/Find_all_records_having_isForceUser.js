@@ -1,30 +1,44 @@
-function findWithConditions(persons) {
-  let result = persons.filter(el => {
-    if (el.isForceUser === true) {
-      let p = {};
-      p.id = el.id;
-      p.name = el.name;
-      p.pilotingScore = el.pilotingScore;
-      p.shootingScore = el.shootingScore;
-      p.isForceUser = el.isForceUser;
-
-      return el;
-    }
+let getForceUsers = persons => {
+  return new Promise((resolve, reject) => {
+    if (persons) {
+      let result = persons.filter(el => {
+        if (el.isForceUser === true) {
+          let p = {};
+          p.id = el.id;
+          p.name = el.name;
+          p.pilotingScore = el.pilotingScore;
+          p.shootingScore = el.shootingScore;
+          p.isForceUser = el.isForceUser;
+          return el;
+        }
+      });
+      resolve(result);
+    } else reject("Error");
   });
+};
 
-  let mapping = result.map(el => {
-    el.addition = el.pilotingScore + el.shootingScore;
-    return el;
+let sumsOfScore = result => {
+  return new Promise((resolve, reject) => {
+    if (result) {
+      let mapping = result.map(el => {
+        el.addition = el.pilotingScore + el.shootingScore;
+        return el;
+      });
+      resolve(mapping);
+    } else reject("Error");
   });
+};
 
-  var sumOfAll = mapping.reduce((sum, ele) => {
-    return sum + ele.addition;
-  }, 0);
-
-  console.log(" summation:" + sumOfAll);
-
-  return mapping;
-}
+let sumOfAll = sumsOfScore => {
+  return new Promise((resolve, reject) => {
+    if (sumsOfScore) {
+      var sumall = sumsOfScore.reduce((sum, ele) => {
+        return sum + ele.addition;
+      }, 0);
+      resolve(sumall);
+    } else reject("Error");
+  });
+};
 
 var personnel = [
   {
@@ -64,4 +78,20 @@ var personnel = [
   }
 ];
 
-console.log(findWithConditions(personnel));
+getForceUsers(personnel)
+  .then(data => {
+    //console.log(data);
+    sumsOfScore(data)
+      .then(sum => {
+        //console.log(sum);
+        sumOfAll(sum)
+          .then(result => console.log(result))
+          .catch(er => console.log(er));
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  })
+  .catch(err => {
+    console.log(err);
+  });
