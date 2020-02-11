@@ -5,6 +5,12 @@ function AddTofirstAndLast(firstObj, LastObj, userArray) {
 }
 
 function getEmailNoWebsiteArray(users) {
+  let userInfo = users.map(({ email, phone, website }) => ({
+    email,
+    phone,
+    website
+  }));
+
   let userInfo = users.map(el => {
     let user = {};
     user.email = el.email;
