@@ -9,6 +9,17 @@ function displayAllParts(data) {
   return result;
 }
 
+let getAllParts = data => {
+  return new Promise((resolve, reject) => {
+    if (data) {
+      const result = data.reduce((parts, course) => {
+        return [...parts, ...course.parts];
+      }, []);
+      resolve(result);
+    } else reject("Something wrong with data");
+  });
+};
+
 const courses = [
   {
     name: "Half Stack application development",
@@ -54,4 +65,6 @@ const courses = [
   }
 ];
 
-console.log(displayAllParts(courses));
+getAllParts(courses)
+  .then(data => console.log(data))
+  .catch(er => console.log(er));

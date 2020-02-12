@@ -38,7 +38,7 @@ let deleteUserWithId = (id, users) => {
   return new Promise((resolve, reject) => {
     if (users) {
       users.splice(id, 1);
-      resolve(result);
+      resolve(users);
     } else reject("Error adding Array");
   });
 };
@@ -84,18 +84,31 @@ const user2 = {
   password: "crazed_checker"
 };
 
-addToFirst(users, user1)
-  .then(data => {
-    addToLast(data, user2)
-      .then(data => console.log(data))
-      .catch(er => console.log(er));
-  })
-  .catch(er => console.log(er));
+// addToFirst(users, user1)
+//   .then(data => {
+//     addToLast(data, user2)
+//       .then(data => console.log(data))
+//       .catch(er => console.log(er));
+//   })
+//   .catch(er => console.log(er));
 
-replaceUser(1, user1, users)
-  .then(data => console.log(data))
-  .catch(er => console.log(er));
+// replaceUser(1, user1, users)
+//   .then(data => console.log(data))
+//   .catch(er => console.log(er));
 
-deleteUserWithId(1, users)
-  .then(data => console.log(data))
-  .catch(er => console.log(er));
+// deleteUserWithId(1, users)
+//   .then(data => console.log(data))
+//   .catch(er => console.log(er));
+
+// OnlyMailNoWebsiteArray(users)
+//   .then(data => console.log(data))
+//   .catch(er => console.log(er));
+
+Promise.all([
+  addToFirst(users, user1),
+  replaceUser(1, user1, users),
+  deleteUserWithId(1, users),
+  OnlyMailNoWebsiteArray(users)
+]).then(function(value) {
+  console.log(value);
+});

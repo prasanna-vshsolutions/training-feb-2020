@@ -1,22 +1,23 @@
-function getGroupBy(data) {
-  let result = [];
-
-  let details = data.map(element => {
-    let age = element.age;
-
-    if (!result.includes(age)) {
-      result.push(age);
-      let groupByAge = data.filter(el => el.age === age);
-      let groupSize = groupByAge.length;
-
-      let g = {};
-      g.age = element.age;
-      g.group = groupSize;
-      return g;
-    }
+let getAgeGroup = data => {
+  return new Promise((resolve, reject) => {
+    if (data) {
+      let result = [];
+      let details = data.map(element => {
+        let age = element.age;
+        if (!result.includes(age)) {
+          result.push(age);
+          let groupByAge = data.filter(el => el.age === age);
+          let groupSize = groupByAge.length;
+          let g = {};
+          g.age = element.age;
+          g.group = groupSize;
+          return g;
+        }
+      });
+      resolve(details);
+    } else reject("Error");
   });
-  return details;
-}
+};
 
 const data = [
   {
@@ -53,4 +54,10 @@ const data = [
   }
 ];
 
-console.log(getGroupBy(data));
+getAgeGroup(data)
+  .then(data => {
+    console.log(data);
+  })
+  .catch(err => {
+    console.log(err);
+  });

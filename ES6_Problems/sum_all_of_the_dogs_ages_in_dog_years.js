@@ -1,30 +1,29 @@
-function sumOfAges(data) {
-  //   let result = data.filter(el => el.type === "dog");
-  //   let mapping = result.map(el => {
-  //     el.age = el.age * 7;
-  //     return el;
-  //   });
+let getAllDogs = data => {
+  return new Promise((resolve, reject) => {
+    if (data) resolve(data.filter(el => el.type == "dog"));
+    else reject("Something wrong with data");
+  });
+};
 
-  //   let sumsOfAll = mapping.reduce((sum, el) => {
-  //     return sum + el.age;
-  //   }, 0);
+let convertToDogAges = typeDogArray => {
+  return new Promise((resolve, reject) => {
+    if (typeDogArray) resolve(typeDogArray.map(el => (el.age *= 7)));
+    else reject("Something wrong with Type dog array");
+  });
+};
 
-  //   return sumsOfAll;
+let getsumOfAges = convertedAgeArray => {
+  return new Promise((resolve, reject) => {
+    if (convertedAgeArray) {
+      let finalSum = convertedAgeArray.reduce((sum, el) => {
+        return sum + el;
+      }, 0);
+      resolve(finalSum);
+    } else reject("Something wrong with Type dog array");
+  });
+};
 
-  let result = data
-    .filter(el => el.type === "dog")
-    .map(el => {
-      el.age = el.age * 7;
-      return el;
-    })
-    .reduce((sum, el) => {
-      return sum + el.age;
-    }, 0);
-
-  return result;
-}
-
-data = [
+let data = [
   {
     name: "Butters",
     age: 3,
@@ -47,4 +46,17 @@ data = [
   }
 ];
 
-console.log(sumOfAges(data));
+getAllDogs(data)
+  .then(result => {
+    // console.log(result);
+    convertToDogAges(result)
+      .then(convertedArray => {
+        //console.log(convertedArray);
+
+        getsumOfAges(convertedArray)
+          .then(sum => console.log("sum of dog ages:" + sum))
+          .catch(error => console.log(error));
+      })
+      .catch(er => console.log(er));
+  })
+  .catch(err => console.log("sum:" + err));
