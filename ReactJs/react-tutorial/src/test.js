@@ -13,6 +13,8 @@ class App extends React.Component {
   state = { styleOne: {}, styleTwo: {} };
 
   onMouseMove = event => {
+    console.log("onMouseMove");
+
     this.setState({
       styleOne: transform(-event.clientX / event.clientY),
       styleTwo: transform(event.clientX / event.clientY)
@@ -20,6 +22,7 @@ class App extends React.Component {
   };
 
   render() {
+    console.log("render");
     return (
       <div onMouseMove={this.onMouseMove}>
         <div className="panel" style={this.state.styleOne} />
