@@ -1,12 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "./styles.css";
+const App = () => {
+  return (
+    <div className="grid-container">
+      <h1>1</h1>
+      <h1>2</h1>
+      <h1>3</h1>
+      <h1>4</h1>
+      <h1>5</h1>
+      <h1>6</h1>
+      <h1>3</h1>
+      <h1>4</h1>
+      <h1>5</h1>
+    </div>
+  );
+};
 
-import * as serviceWorker from "./serviceWorker";
-import App1 from "./app1";
-
-//ReactDOM.render(<App />, document.getElementById("root"));
-ReactDOM.render(<App1 />, document.getElementById("root"));
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(<App />, document.querySelector("#root"));
