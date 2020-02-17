@@ -11,5 +11,6 @@ addParameters({
 
 function loadStories() {
   require("../src/stories/buttonStories");
+  require("../src/stories/cardStories");
 }
 configure(loadStories, module);

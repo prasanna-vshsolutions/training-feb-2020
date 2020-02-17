@@ -10,11 +10,12 @@ function transform(offset) {
 }
 
 class App extends React.Component {
-  state = { styleOne: {}, styleTwo: {} };
+  state = { styleOne: {}, styleTwo: {}, a: [] };
 
   onMouseMove = event => {
     console.log("onMouseMove");
-
+    console.log("push:" + this.state.push());
+    console.log("Concat:" + this.state.concatno());
     this.setState({
       styleOne: transform(-event.clientX / event.clientY),
       styleTwo: transform(event.clientX / event.clientY)

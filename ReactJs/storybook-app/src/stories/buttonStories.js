@@ -33,7 +33,3 @@ storiesOf("Button", module)
       style={{ background: "gray", border: "gray", cursor: "not-allowed" }}
     />
   ));
-
-storiesOf("New Button", module).add("with primary", () => (
-  <Button onClick={action("click")} label="Primary Button" />
-));
