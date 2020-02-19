@@ -6,7 +6,12 @@ const footerNote = () => {
   return (
     <>
       Copyright © 2020 Company Name . Design:
-      <a href="https://www.tooplate.com">Tooplate</a>
+      <a
+        style={{ color: "#fff", transition: "all 0.3s ease" }}
+        href="https://www.tooplate.com"
+      >
+        Tooplate
+      </a>
     </>
   );
 };
@@ -29,7 +34,7 @@ display: block;
 function Footer() {
   return (
     <FooterText>
-      <Para style={{ color: " white" }} content={footerNote()} />
+      <Para style={{ color: "white" }} content={footerNote()} isAnchor="true" />
     </FooterText>
   );
 }

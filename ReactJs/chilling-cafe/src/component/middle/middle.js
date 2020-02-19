@@ -17,8 +17,11 @@ const secondPara =
 const talkToUs = () => {
   return (
     <>
-      Reach us via <a href="mailto:info@example.com">Email</a> or follow us on
-      social icons below. Thank you.
+      Reach us via{" "}
+      <a style={{ color: "#333333" }} href="mailto:info@example.com">
+        Email
+      </a>{" "}
+      or follow us on social icons below. Thank you.
     </>
   );
 };
