@@ -18,7 +18,15 @@ const talkToUs = () => {
   return (
     <>
       Reach us via{" "}
-      <a style={{ color: "#333333" }} href="mailto:info@example.com">
+      <a
+        style={{
+          textDecoration: "none",
+          color: "#333333",
+          fontWeight: "600",
+          transition: "all 0.3s ease"
+        }}
+        href="mailto:info@example.com"
+      >
         Email
       </a>{" "}
       or follow us on social icons below. Thank you.

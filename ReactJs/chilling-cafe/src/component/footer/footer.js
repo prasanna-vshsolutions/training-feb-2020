@@ -7,7 +7,11 @@ const footerNote = () => {
     <>
       Copyright © 2020 Company Name . Design:
       <a
-        style={{ color: "#fff", transition: "all 0.3s ease" }}
+        style={{
+          textDecoration: "none",
+          color: "#fff",
+          transition: "all 0.3s ease"
+        }}
         href="https://www.tooplate.com"
       >
         Tooplate

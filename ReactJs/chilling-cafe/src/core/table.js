@@ -27,13 +27,13 @@ const TableData = props => {
     <Table>
       <HeadRow>
         {props.header.map(el => (
-          <div>{el}</div>
+          <td>{el}</td>
         ))}
       </HeadRow>
       {props.rows.map(el => (
         <Row>
           {el.data.map(element => (
-            <div>{element}</div>
+            <td>{element}</td>
           ))}
         </Row>
       ))}
