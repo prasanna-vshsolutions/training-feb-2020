@@ -1,5 +1,5 @@
 import React from "react";
-import SectionService from "./sectionService";
+import SectionService from "./serviceSection";
 
 const data1 = [
   {
@@ -40,6 +40,6 @@ export const sectionService = () => {
 };
 
 export default {
-  title: "Section Service",
+  title: "Service Section",
   component: SectionService
 };
