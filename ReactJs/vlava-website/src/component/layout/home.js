@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../../component/header/header";
 import Middle from "../../component/middle/middle";
-
+import Footer from "../../core/footerSection";
 const Body = styled.body`
   font-family: "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica,
     sans-serif, Arial;
@@ -22,6 +22,7 @@ export default class Home extends React.Component {
         <Body>
           <Header />
           <Middle />
+          <Footer />
         </Body>
       </>
     );

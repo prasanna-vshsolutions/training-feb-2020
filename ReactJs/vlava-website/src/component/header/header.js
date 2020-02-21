@@ -21,20 +21,18 @@ const NavBar = styled.div`
 
 const Container = styled.div`
   display: block;
-  box-sizing: border-box;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  width: 750px;
   overflow: hidden;
 `;
 const NavBarCollapse = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  margin-right: 0;
-  margin-left: 0;
+  margin-right: 0px;
+  margin-left: 0px;
 `;
 export default class Header extends React.Component {
   render() {
